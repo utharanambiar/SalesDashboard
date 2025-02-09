@@ -12,6 +12,7 @@ import {
   ArcElement,
 } from "chart.js";
 import CategoryChart from "./CategoryChart";
+import CombinationChart from "./CombinationChart";
 
 ChartJS.register(
   CategoryScale,
@@ -31,7 +32,14 @@ const Dashboard: React.FC = () => {
       <h2 className="text-2xl font-semibold text-center text-white">
         Dashboard
       </h2>
-      <CategoryChart />
+      <div className="flex gap-10">
+        <div className="w-full md:w-2/3 p-4 shadow-lg rounded-lg bg-darkChartBg">
+          <CombinationChart />
+        </div>
+        <div className="w-full md:w-1/3 p-4 shadow-lg rounded-lg bg-darkChartBg">
+          <CategoryChart />
+        </div>
+      </div>
     </div>
   );
 };
