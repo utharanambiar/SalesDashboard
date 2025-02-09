@@ -7,6 +7,7 @@ export type ComboChartData = {
 export type DonutChartData = {
   category: string;
   value: number;
+  month: string;
 };
 
 export type CardData = {
