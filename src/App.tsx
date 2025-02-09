@@ -1,14 +1,12 @@
-import './App.css'
+import "./App.css";
+import Dashboard from "./Components/Dashboard";
 
 function App() {
-
   return (
-      <div className="flex items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">
-        Hello, Vite + React + TypeScript + Tailwind!
-      </h1>
+    <div className="bg-darkBg">
+      <Dashboard />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
