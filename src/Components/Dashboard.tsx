@@ -73,19 +73,19 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="p-4 space-y-8">
-      <h2 className="text-2xl font-semibol text-white">
-        Welcome, User!
+      <h2 className="text-4xl font-semibol text-white md:mt-5 mb-5">
+        Sales Dashboard
       </h2>
       <MonthRangeFilter
         onApplyFilter={applyFilter}
         onResetFilter={resetFilter}
       />
-      <div className="flex gap-10">
+      <div className="flex gap-10 overflow-x-auto md:overflow-x-visible">
         {cardData.map((card, idx) => (
           <DashboardCard key={idx} value={card.value} label={card.label} />
         ))}
       </div>
-      <div className="flex gap-10">
+      <div className="flex flex-col md:flex-row gap-10">
         <div className="w-full md:w-2/3 p-4 shadow-lg rounded-lg bg-darkChartBg">
           <CombinationChart />
         </div>

@@ -24,7 +24,7 @@ const MonthRangeFilter: React.FC<MonthRangeFilterProps> = ({
   };
 
   return (
-    <div className="flex justify-end items-center gap-4 mb-6">
+    <div className="flex flex-col md:flex-row justify-end md:items-center gap-4 mb-6">
       <div className="flex items-center">
         <label htmlFor="start-month" className="text-white mr-2">
           Start Month:
@@ -41,7 +41,7 @@ const MonthRangeFilter: React.FC<MonthRangeFilterProps> = ({
               setEndMonth(newStartMonth);
             }
           }}
-          className="p-2 rounded-md bg-darkChartBg text-white"
+          className="p-2 rounded-md bg-darkChartBg text-white w-full"
         >
           {months.map((month, index) => (
             <option key={month} value={index}>
@@ -59,10 +59,9 @@ const MonthRangeFilter: React.FC<MonthRangeFilterProps> = ({
           id="end-month"
           value={endMonth}
           onChange={(e) => setEndMonth(Number(e.target.value))}
-          className="p-2 rounded-md bg-darkChartBg text-white"
+          className="p-2 rounded-md bg-darkChartBg text-white w-full"
         >
           {months.map((month, index) => (
-            // Disable the months that come before the start date
             <option key={month} value={index} disabled={index < startMonth}>
               {month}
             </option>
@@ -70,18 +69,18 @@ const MonthRangeFilter: React.FC<MonthRangeFilterProps> = ({
         </select>
       </div>
 
-      <div className="flex gap-4">
+      <div className="flex gap-4 mt-4 md:mt-0">
         <button
           onClick={handleApply}
-          className="px-4 py-2 bg-blue-600 text-white rounded-md"
+          className="px-4 py-2 bg-blue-600 text-white rounded-md w-1/2"
         >
-          Apply Filter
+          Apply
         </button>
         <button
           onClick={handleReset}
-          className="px-4 py-2 bg-gray-600 text-white rounded-md"
+          className="px-4 py-2 bg-gray-600 text-white rounded-md w-1/2 "
         >
-          Reset Filter
+          Reset
         </button>
       </div>
     </div>
