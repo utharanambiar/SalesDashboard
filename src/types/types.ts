@@ -9,6 +9,11 @@ export type DonutChartData = {
   value: number;
 };
 
+export type CardData = {
+  label: string;
+  value: number;
+};
+
 type DatasetType =
   | {
       type: "bar";
