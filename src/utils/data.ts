@@ -16,9 +16,24 @@ export const comboChartData: ComboChartData[] = [
 ];
 
 export const donutChartData: DonutChartData[] = [
-  { category: "Electronics", value: 35 },
-  { category: "Fashion", value: 25 },
-  { category: "Home", value: 15 },
-  { category: "Sports", value: 10 },
-  { category: "Other", value: 15 },
+  { category: "Electronics", value: 35, month: "January" },
+  { category: "Fashion", value: 25, month: "March" },
+  { category: "Home", value: 15, month: "May" },
+  { category: "Sports", value: 10, month: "September" },
+  { category: "Other", value: 15, month: "December" },
+];
+
+export const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
