@@ -39,3 +39,6 @@ export type ComboChart = {
   labels: string[];
   datasets: DatasetType[];
 };
+
+// Define theme types
+export type Theme = "light" | "dark";

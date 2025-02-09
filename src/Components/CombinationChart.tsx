@@ -1,8 +1,10 @@
 import { Bar } from "react-chartjs-2";
 import { useChart } from "../context/useChart";
+import { useTheme } from "../context/useTheme";
 
 function CombinationChart() {
   const { comboData } = useChart();
+  const { theme } = useTheme();
   const comboChart = {
     labels: comboData.map((d) => d.month),
     datasets: [
@@ -51,7 +53,11 @@ function CombinationChart() {
 
   return (
     <>
-      <h3 className="text-xl font-medium mb-4 text-white">
+      <h3
+        className={`text-xl font-medium mb-4 text-${
+          theme === "light" ? "gray-900" : "white"
+        }`}
+      >
         Revenue and Profit
       </h3>
       <Bar data={comboChart as never} options={comboChartOptions} />

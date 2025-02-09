@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { months } from "../utils/data";
+import { useTheme } from "../context/useTheme";
 
 interface MonthRangeFilterProps {
   onApplyFilter: (startMonth: number, endMonth: number) => void;
@@ -12,6 +13,7 @@ const MonthRangeFilter: React.FC<MonthRangeFilterProps> = ({
 }) => {
   const [startMonth, setStartMonth] = useState<number>(0); // Default to January
   const [endMonth, setEndMonth] = useState<number>(11); // Default to December
+  const { theme } = useTheme();
 
   const handleApply = () => {
     onApplyFilter(startMonth, endMonth);
@@ -26,7 +28,10 @@ const MonthRangeFilter: React.FC<MonthRangeFilterProps> = ({
   return (
     <div className="flex flex-col md:flex-row justify-end md:items-center gap-4 mb-6">
       <div className="flex items-center">
-        <label htmlFor="start-month" className="text-white mr-2">
+        <label
+          htmlFor="start-month"
+          className={`text-${theme === "light" ? "gray-500" : "white"} mr-2`}
+        >
           Start Month:
         </label>
         <select
@@ -41,7 +46,11 @@ const MonthRangeFilter: React.FC<MonthRangeFilterProps> = ({
               setEndMonth(newStartMonth);
             }
           }}
-          className="p-2 rounded-md bg-darkChartBg text-white w-full"
+          className={`p-2 rounded-md w-full ${
+            theme === "light"
+              ? "bg-white text-gray-900"
+              : "bg-darkChartBg text-white"
+          } shadow-md hover:shadow-lg transition-shadow`}
         >
           {months.map((month, index) => (
             <option key={month} value={index}>
@@ -52,14 +61,21 @@ const MonthRangeFilter: React.FC<MonthRangeFilterProps> = ({
       </div>
 
       <div className="flex items-center">
-        <label htmlFor="end-month" className="text-white mr-2">
+        <label
+          htmlFor="end-month"
+          className={`text-${theme === "light" ? "gray-500" : "white"} mr-2`}
+        >
           End Month:
         </label>
         <select
           id="end-month"
           value={endMonth}
           onChange={(e) => setEndMonth(Number(e.target.value))}
-          className="p-2 rounded-md bg-darkChartBg text-white w-full"
+          className={`p-2 rounded-md w-full ${
+            theme === "light"
+              ? "bg-white text-gray-900"
+              : "bg-darkChartBg text-white"
+          } shadow-md hover:shadow-lg transition-shadow`}
         >
           {months.map((month, index) => (
             <option key={month} value={index} disabled={index < startMonth}>

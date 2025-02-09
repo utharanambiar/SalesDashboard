@@ -1,8 +1,10 @@
 import { Doughnut } from "react-chartjs-2";
 import { useChart } from "../context/useChart";
+import { useTheme } from "../context/useTheme";
 
 function CategoryChart() {
   const { donutData } = useChart();
+  const { theme } = useTheme();
   const donutChart = {
     labels: donutData.map((item) => item.category),
     datasets: [
@@ -23,13 +25,20 @@ function CategoryChart() {
 
   return (
     <>
-      <h3 className="text-xl font-medium mb-4 text-white">
+      <h3
+        className={`text-xl font-medium mb-4 text-${
+          theme === "light" ? "gray-900" : "white"
+        }`}
+      >
         Category Distribution
       </h3>
       {donutData.length > 0 ? (
         <Doughnut data={donutChart} />
       ) : (
-        <div className="text-2xl text-gray-500 h-full flex justify-center items-center"> No data to display</div>
+        <div className="text-2xl text-gray-500 h-full flex justify-center items-center">
+          {" "}
+          No data to display
+        </div>
       )}
     </>
   );

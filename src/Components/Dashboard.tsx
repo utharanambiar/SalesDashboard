@@ -19,6 +19,10 @@ import { comboChartData, donutChartData, months } from "../utils/data";
 import { calculateTotal } from "../utils/utility";
 import { CardData } from "../types/types";
 import { useChart } from "../context/useChart";
+import { IoMoon } from "react-icons/io5";
+import { IoSunny } from "react-icons/io5";
+import { useTheme } from "../context/useTheme";
+import sales from "../../public/sales.png";
 
 ChartJS.register(
   CategoryScale,
@@ -33,6 +37,7 @@ ChartJS.register(
 );
 
 const Dashboard: React.FC = () => {
+  const { theme, toggleTheme } = useTheme();
   const { comboData, donutData, updateComboData, updateDonutData } = useChart();
 
   const cardData: CardData[] = [
@@ -72,10 +77,40 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="p-4 space-y-8">
-      <h2 className="text-4xl font-semibol text-white md:mt-5 mb-5">
-        Sales Dashboard
-      </h2>
+    <div
+      className={`p-4 space-y-8 bg-${theme} text-${
+        theme === "light" ? "black" : "white"
+      }`}
+    >
+      <div className="flex flex-row justify-between">
+        <div className="flex">
+          <img
+            src={sales}
+            alt="sales logo"
+            className="w-10 md:w-12 lg:w-16 xl:w-20 h-auto object-contain self-start"
+          />
+          <h2
+            className={`text-2xl ml-3 md:text-4xl font-semibol text-${
+              theme === "light" ? "gray-900" : "white"
+            } md:mt-5 mb-5 font-mono`}
+          >
+            SALES DASHBOARD
+          </h2>
+        </div>
+        <button
+          onClick={toggleTheme}
+          className="flex self-start cursor-pointer"
+          title={`Toggle to change to ${
+            theme === "light" ? "dark" : "light"
+          } mode`}
+        >
+          {theme === "dark" ? (
+            <IoSunny size="30" />
+          ) : (
+            <IoMoon size="30" color="gray" />
+          )}
+        </button>
+      </div>
       <MonthRangeFilter
         onApplyFilter={applyFilter}
         onResetFilter={resetFilter}
@@ -86,10 +121,18 @@ const Dashboard: React.FC = () => {
         ))}
       </div>
       <div className="flex flex-col md:flex-row gap-10">
-        <div className="w-full md:w-2/3 p-4 shadow-lg rounded-lg bg-darkChartBg">
+        <div
+          className={`w-full md:w-2/3 p-4 shadow-lg rounded-lg bg-${
+            theme === "light" ? "white" : "darkChartBg"
+          }`}
+        >
           <CombinationChart />
         </div>
-        <div className="w-full md:w-1/3 p-4 shadow-lg rounded-lg bg-darkChartBg">
+        <div
+          className={`w-full md:w-1/3 p-4 shadow-lg rounded-lg bg-${
+            theme === "light" ? "white" : "darkChartBg"
+          }`}
+        >
           <CategoryChart />
         </div>
       </div>
