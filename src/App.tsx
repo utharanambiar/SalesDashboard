@@ -1,13 +1,13 @@
 import "./App.css";
 import Dashboard from "./Components/Dashboard";
-import { DashboardProvider } from "./context/DashboardContext";
+import { ChartProvider } from "./context/ChartContext";
 
 function App() {
   return (
     <div className="bg-darkBg">
-      <DashboardProvider>
+      <ChartProvider>
         <Dashboard />
-      </DashboardProvider>
+      </ChartProvider>
     </div>
   );
 }

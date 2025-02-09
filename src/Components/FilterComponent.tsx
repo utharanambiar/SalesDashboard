@@ -25,7 +25,6 @@ const MonthRangeFilter: React.FC<MonthRangeFilterProps> = ({
 
   return (
     <div className="flex justify-end items-center gap-4 mb-6">
-      {/* Start Month Dropdown */}
       <div className="flex items-center">
         <label htmlFor="start-month" className="text-white mr-2">
           Start Month:

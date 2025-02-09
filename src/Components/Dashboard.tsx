@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import MonthRangeFilter from "./FilterComponent";
 import {
   Chart as ChartJS,
@@ -18,6 +18,7 @@ import DashboardCard from "./DashboardCard";
 import { comboChartData, donutChartData, months } from "../utils/data";
 import { calculateTotal } from "../utils/utility";
 import { CardData } from "../types/types";
+import { useChart } from "../context/useChart";
 
 ChartJS.register(
   CategoryScale,
@@ -32,21 +33,20 @@ ChartJS.register(
 );
 
 const Dashboard: React.FC = () => {
-  const [filteredComboData, setFilteredComboData] = useState(comboChartData);
-  const [filteredDonutData, setFilteredDonutData] = useState(donutChartData);
+  const { comboData, donutData, updateComboData, updateDonutData } = useChart();
 
   const cardData: CardData[] = [
     {
       label: "Order Quantity",
-      value: calculateTotal(filteredDonutData, "value"),
+      value: calculateTotal(donutData, "value"),
     },
     {
       label: "Profit",
-      value: calculateTotal(filteredComboData, "profit"),
+      value: calculateTotal(comboData, "profit"),
     },
     {
       label: "Revenue",
-      value: calculateTotal(filteredComboData, "revenue"),
+      value: calculateTotal(comboData, "revenue"),
     },
   ];
 
@@ -56,25 +56,25 @@ const Dashboard: React.FC = () => {
       const monthIndex = months.indexOf(data.month);
       return monthIndex >= startMonth && monthIndex <= endMonth;
     });
-    setFilteredComboData(filteredData);
+    updateComboData(filteredData);
 
     // Filter category chart data based on month
     const filteredCategoryData = donutChartData.filter((data) => {
       const monthIndex = months.indexOf(data.month);
       return monthIndex >= startMonth && monthIndex <= endMonth;
     });
-    setFilteredDonutData(filteredCategoryData);
+    updateDonutData(filteredCategoryData);
   };
 
   const resetFilter = () => {
-    setFilteredComboData(comboChartData);
-    setFilteredDonutData(donutChartData);
+    updateComboData(comboChartData);
+    updateDonutData(donutChartData);
   };
 
   return (
     <div className="p-4 space-y-8">
-      <h2 className="text-2xl font-semibold text-center text-white">
-        Dashboard
+      <h2 className="text-2xl font-semibol text-white">
+        Welcome, User!
       </h2>
       <MonthRangeFilter
         onApplyFilter={applyFilter}
@@ -90,7 +90,7 @@ const Dashboard: React.FC = () => {
           <CombinationChart />
         </div>
         <div className="w-full md:w-1/3 p-4 shadow-lg rounded-lg bg-darkChartBg">
-          <CategoryChart data={filteredDonutData} />
+          <CategoryChart />
         </div>
       </div>
     </div>

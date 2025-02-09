@@ -1,17 +1,13 @@
-import React from "react";
 import { Doughnut } from "react-chartjs-2";
-import { DonutChartData } from "../types/types";
+import { useChart } from "../context/useChart";
 
-interface CategoryChartProps {
-  data: DonutChartData[];
-}
-
-const CategoryChart: React.FC<CategoryChartProps> = ({ data }) => {
+function CategoryChart() {
+  const { donutData } = useChart();
   const donutChart = {
-    labels: data.map((item) => item.category),
+    labels: donutData.map((item) => item.category),
     datasets: [
       {
-        data: data.map((item) => item.value),
+        data: donutData.map((item) => item.value),
         backgroundColor: [
           "#DF6E53",
           "#E49A4E",
@@ -30,9 +26,13 @@ const CategoryChart: React.FC<CategoryChartProps> = ({ data }) => {
       <h3 className="text-xl font-medium mb-4 text-white">
         Category Distribution
       </h3>
-      <Doughnut data={donutChart} />
+      {donutData.length > 0 ? (
+        <Doughnut data={donutChart} />
+      ) : (
+        <div className="text-2xl text-gray-500 h-full flex justify-center items-center"> No data to display</div>
+      )}
     </>
   );
-};
+}
 
 export default CategoryChart;

@@ -1,15 +1,15 @@
 import { Bar } from "react-chartjs-2";
-import { useDashboard } from "../context/useDashboard";
+import { useChart } from "../context/useChart";
 
 function CombinationChart() {
-  const { filteredData } = useDashboard();
+  const { comboData } = useChart();
   const comboChart = {
-    labels: filteredData.map((d) => d.month),
+    labels: comboData.map((d) => d.month),
     datasets: [
       {
         type: "bar",
         label: "Revenue",
-        data: filteredData.map((d) => d.revenue),
+        data: comboData.map((d) => d.revenue),
         backgroundColor: "rgba(75, 192, 192, 0.2)",
         borderColor: "rgba(75, 192, 192, 1)",
         borderWidth: 1,
@@ -17,7 +17,7 @@ function CombinationChart() {
       {
         type: "line",
         label: "Profit",
-        data: filteredData.map((d) => d.profit),
+        data: comboData.map((d) => d.profit),
         borderColor: "#DF6E53",
         backgroundColor: "rgba(255, 99, 132, 0.2)",
         fill: true,
@@ -54,9 +54,9 @@ function CombinationChart() {
       <h3 className="text-xl font-medium mb-4 text-white">
         Revenue and Profit
       </h3>
-        <Bar data={comboChart as never} options={comboChartOptions} />
+      <Bar data={comboChart as never} options={comboChartOptions} />
     </>
   );
-};
+}
 
 export default CombinationChart;
