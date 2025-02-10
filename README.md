@@ -1,50 +1,82 @@
-# React + TypeScript + Vite
+# Sales dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Try at: https://utharanambiar.github.io/SalesDashboard/
 
-Currently, two official plugins are available:
+### Problem statement
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Build a responsive React dashboard that displays:
 
-## Expanding the ESLint configuration
+- Combination Chart – A bar chart for revenue and a line chart for profit over months.
+- Donut Chart – A chart showing the distribution of sales across product categories.
+The dashboard must include:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Filter: Select a month range to update the charts dynamically.
+- State Management: Use Context API or another suitable approach.
+- Styling: Ensure a clean and responsive UI using Tailwind CSS.
+- Data Handling: Use the provided sample data.
 
-- Configure the top-level `parserOptions` property like this:
+### Solution
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+#### Project Setup
+- React was used for building the dashboard, and Chart.js (via react-chartjs-2) for rendering a combination bar/line chart and a donut chart.
+- Tailwind CSS was chosen for responsive, utility-first styling, ensuring flexibility across devices.
+- Context API managed global state for theme (light/dark mode) and chart data.
+
+
+####  Dashboard Structure
+- Combination Chart: A bar chart for revenue and a line chart for profit, with months as the X-axis.
+- Donut Chart: Displays sales distribution across product categories.
+
+
+####  Filtering Logic
+- Month Range Filter: Users select start and end months via dropdowns, updating the chart data accordingly.
+- Reset Filter: Resets the filter and restores full data.
+
+
+#### Design Choices
+- Chart.js: Chosen for its flexibility to display combined bar/line charts and donut charts.
+- Tailwind CSS: Simplified layout and responsive design without custom CSS.
+- Context API: Used for efficient state management across components.
+- Typescript: Used to ensure type safety and avoid runtime errors.
+
+## Installation
+
+Go to root directory (SalesDashboard) of project and do the following:
+
+```bash
+  npm i
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+To start the application run
+    
+```bash
+  npm run dev
 ```
+## Screenshots
+
+Dark theme:
+
+[![image.png](https://i.postimg.cc/bNzZcFgp/image.png)](https://postimg.cc/t7MqFk8M)
+
+Light theme:
+
+[![image.png](https://i.postimg.cc/j50j88CV/image.png)](https://postimg.cc/5Hg1ySwp)
+
+Filtered data:
+
+[![image.png](https://i.postimg.cc/T1T3xprC/image.png)](https://postimg.cc/jwkbQq37)
+
+Mobile screen:
+
+[![image.png](https://i.postimg.cc/kX1grMDv/image.png)](https://postimg.cc/bsnhkhxZ)
+
+
+
+
+## Features
+
+- Light/dark mode toggle
+- Filter based on months
+- A data summary section displays total revenue and profit for the selected month range.
+- Fully responsive using tailwind CSS
+
