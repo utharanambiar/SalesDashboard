@@ -3,7 +3,7 @@ import { comboChartData as initialComboData, donutChartData as initialDonutData 
 import { ComboChartData, DonutChartData } from "../types/types";
 import { ChartContext } from "./useChart";
 
-// Provider component
+// Provider component to manage chart data
 export const ChartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [comboData, setComboData] = useState<ComboChartData[]>(initialComboData);
   const [donutData, setDonutData] = useState<DonutChartData[]>(initialDonutData);

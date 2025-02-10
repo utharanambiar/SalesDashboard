@@ -5,6 +5,8 @@ import { useTheme } from "../context/useTheme";
 function CombinationChart() {
   const { comboData } = useChart();
   const { theme } = useTheme();
+
+  // Combination chart data
   const comboChart = {
     labels: comboData.map((d) => d.month),
     datasets: [
@@ -28,6 +30,7 @@ function CombinationChart() {
     ],
   };
 
+  // Combination chart options
   const comboChartOptions = {
     responsive: true,
     plugins: {

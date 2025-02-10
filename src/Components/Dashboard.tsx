@@ -99,6 +99,7 @@ const Dashboard: React.FC = () => {
             SALES DASHBOARD
           </h2>
         </div>
+        {/* Light and dark theme support */}
         <button
           onClick={toggleTheme}
           className="flex self-start cursor-pointer"
@@ -118,6 +119,7 @@ const Dashboard: React.FC = () => {
         onResetFilter={resetFilter}
       />
       <div className="flex gap-10 overflow-x-auto md:overflow-x-visible">
+        {/* Render Profit, Revenue and Quantity tiles */}
         {cardData.map((card, idx) => (
           <DashboardCard key={idx} value={card.value} label={card.label} />
         ))}

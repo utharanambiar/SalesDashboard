@@ -3,7 +3,7 @@ interface ChartDataItem {
   value?: number;
   revenue?: number;
 }
-
+// Calculates total for summary tiles
 const calculateTotal = (
   data: ChartDataItem[],
   key: "profit" | "value" | "revenue"

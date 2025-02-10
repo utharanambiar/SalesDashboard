@@ -5,6 +5,8 @@ import { useTheme } from "../context/useTheme";
 function CategoryChart() {
   const { donutData } = useChart();
   const { theme } = useTheme();
+
+  // Category chart data
   const donutChart = {
     labels: donutData.map((item) => item.category),
     datasets: [
