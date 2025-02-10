@@ -11,6 +11,7 @@ import {
   Tooltip,
   Legend,
   ArcElement,
+  LineController,
 } from "chart.js";
 import CategoryChart from "./CategoryChart";
 import CombinationChart from "./CombinationChart";
@@ -25,6 +26,7 @@ import { useTheme } from "../context/useTheme";
 import sales from "../../public/sales.png";
 
 ChartJS.register(
+  LineController,
   CategoryScale,
   LinearScale,
   BarElement,
