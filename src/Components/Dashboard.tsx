@@ -82,7 +82,7 @@ const Dashboard: React.FC = () => {
     <div
       className={`p-4 space-y-8 bg-${theme} text-${
         theme === "light" ? "black" : "white"
-      }`}
+      } h-screen overflow-y-scroll`}
     >
       <div className="flex flex-row justify-between">
         <div className="flex">
@@ -122,16 +122,16 @@ const Dashboard: React.FC = () => {
           <DashboardCard key={idx} value={card.value} label={card.label} />
         ))}
       </div>
-      <div className="flex flex-col md:flex-row gap-10">
+      <div className="flex flex-col xl:flex-row gap-10">
         <div
-          className={`w-full md:w-2/3 p-4 shadow-lg rounded-lg bg-${
+          className={`w-full xl:w-2/3 p-4 shadow-lg rounded-lg bg-${
             theme === "light" ? "white" : "darkChartBg"
           }`}
         >
           <CombinationChart />
         </div>
         <div
-          className={`w-full md:w-1/3 p-4 shadow-lg rounded-lg bg-${
+          className={`w-full xl:w-1/3 p-4 shadow-lg rounded-lg bg-${
             theme === "light" ? "white" : "darkChartBg"
           }`}
         >
